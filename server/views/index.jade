@@ -1,2 +1,20 @@
-div
-    h1 PC Mania Gaming Review site in progress...
+extends includes/layout
+block main-content
+    header.nav.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                a.navbar-brand(href="#/") PC Mania Game Reviews
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href="#/") Home
+                    li
+                        a(href="#/games") Games
+                div(ng-include="'partials/account/login'")
+
+    section
+        div(ng-view)
+
+    footer
+        p.text-center
+            | &copy; Telerik Academy 2016
