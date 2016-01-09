@@ -9,5 +9,12 @@ require('./server/config/mongoose')(config);
 
 //custom model routes to be added
 
+//TODO: The below code to be removed once routes.js logic is properly modified
+app.set('view engine', 'jade');
+app.set('views', config.rootPath + '/server/views');
+app.get('*', function(req, res) {
+    res.render('index');
+});
+
 app.listen(config.port);
 console.log("Server running on port: " + config.port);
