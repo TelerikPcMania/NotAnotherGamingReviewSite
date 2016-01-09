@@ -7,7 +7,7 @@ var commentSchema = mongoose.Schema({
     author_id: Int
 });
 
-var Comment = mongoose.model('review', commentSchema);
+var Comment = mongoose.model('comment', commentSchema);
 
 module.exports.seedInitialComments = function() {
     Comment.find({}).exec(function(err, collection) {
