@@ -1,0 +1,19 @@
+{
+  "name": "telerikpcmania",
+  "version": "1.0.0",
+  "description": "Gaming review site",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TelerikPcMania/NotAnotherGamingReviewSite.git"
+  },
+  "author": "Ivan Nikolov, Vyara Hristova, Kiril Borisov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TelerikPcMania/NotAnotherGamingReviewSite/issues"
+  },
+  "homepage": "https://github.com/TelerikPcMania/NotAnotherGamingReviewSite#readme"
+}
