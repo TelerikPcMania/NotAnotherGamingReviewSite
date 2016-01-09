@@ -8,12 +8,13 @@
     "Kiril Borisov"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/TelerikPcMania/NotAnotherGamingReviewSite",
   "moduleType": [],
-  "homepage": "",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
+    "./client/lib",
     "test",
     "tests"
   ]
