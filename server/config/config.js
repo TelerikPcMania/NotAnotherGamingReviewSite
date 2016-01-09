@@ -9,7 +9,7 @@ module.exports = {
     },
     production: {
         rootPath: rootPath,
-        db: '', //db connection string to be added
+        db: 'mongodb://pcmania:pcmania@ds039185.mongolab.com:39185/heroku_2j8dwp6n', //heroku mongolab connection string
         port: process.env.PORT || 2020
     }
 }
