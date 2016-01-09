@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/TelerikPcMania/NotAnotherGamingReviewSite/issues"
   },
-  "homepage": "https://github.com/TelerikPcMania/NotAnotherGamingReviewSite#readme"
+  "homepage": "https://github.com/TelerikPcMania/NotAnotherGamingReviewSite#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
 }
