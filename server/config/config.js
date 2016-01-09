@@ -4,7 +4,7 @@ var rootPath = path.normalize(__dirname + '/../../')
 module.exports = {
     development: {
         rootPath: rootPath,
-        db: '', //db connection string to be added
+        db: 'mongodb://localhost:27017/pcmania', //db connection string to be added
         port: process.env.PORT || 2020
     },
     production: {
