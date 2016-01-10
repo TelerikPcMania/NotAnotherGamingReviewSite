@@ -1,13 +1,13 @@
 .container
     h2 {{ game.title }}
-    p {{ game.released | date }}
+    p Released: {{ game.released | date }}
     p Rating: {{game.rating}}
     div
         img(src="{{game.image}}")
 
-    ul
-        li(ng-repeat="tag in game.tags") {{ tag }}
-    ul
-        li(ng-repeat="platform in game.platforms") {{ platform }}
-    ul
-        li(ng-repeat="review in game.reviews") {{ review.text }}
+    ul.games Tags:
+        li(ng-repeat="tag in game.tags")  {{ tag }}
+    ul.games Platforms:
+        li(ng-repeat="platform in game.platforms")  {{ platform }}
+    ul.games Reviews:
+        li(ng-repeat="review in game.reviews")  {{ review.text }}
