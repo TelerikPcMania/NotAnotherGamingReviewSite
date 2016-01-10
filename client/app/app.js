@@ -1,6 +1,6 @@
 var app = angular.module('app', ['ngResource', 'ngRoute']).value('toastr', toastr);
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $locationProvider) {
 
     var routeUserChecks = {
         adminRole: {

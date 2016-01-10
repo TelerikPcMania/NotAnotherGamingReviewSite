@@ -1,0 +1,7 @@
+div(ng-repeat="game in games | orderBy: '-released' | limitTo: 10")
+    .row
+        .col-md-3
+            | {{ game.released | date: 'MMM d yyyy' }}
+        .col-md-9
+            a(href="#/games/{{ game._id }}") {{ game.title }}
+
