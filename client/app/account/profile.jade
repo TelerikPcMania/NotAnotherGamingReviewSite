@@ -1,8 +1,8 @@
 .container
-    .well
+    .well(ng-controller="ProfileCtrl")
         form.form-horizontal(name="profileForm")
             fieldset
-                legend User Profile
+                legend {{user.userName}}'s profile
                 .form-group
                     label.col-md-2.control-label(for="first-name") First Name
                     .col-md-10
