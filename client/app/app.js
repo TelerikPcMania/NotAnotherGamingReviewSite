@@ -28,6 +28,11 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: '/partials/games/game-details',
             controller: 'GameDetailsCtrl'
         })
+        .when('/add-game', {
+            templateUrl: '/partials/games/add-game',
+            controller: 'GameDetailsCtrl',
+            resolve: routeUserChecks.authenticated
+        })
         .when('/signup', {
             templateUrl: '/partials/account/signup',
             controller: 'SignUpCtrl'
