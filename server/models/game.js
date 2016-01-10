@@ -13,7 +13,7 @@ var gamesSchema = mongoose.Schema({
     tags: [String]
 });
 
-var Game = mongoose.model('Game', gamesSchema);
+var Game = mongoose.model('game', gamesSchema);
 
 module.exports.seedInitialGames = function() {
     Game.find({}).exec(function(err, collection) {
