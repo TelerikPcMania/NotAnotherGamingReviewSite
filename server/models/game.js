@@ -1,5 +1,6 @@
+require('../models/review');
 var mongoose = require('mongoose'),
-    reviews = require('../models/review');
+    reviews = mongoose.model('review').schema;
 
 var gamesSchema = mongoose.Schema({
     title: {type: String, required: true },
@@ -8,14 +9,14 @@ var gamesSchema = mongoose.Schema({
     platforms: [String],
     img: { data: Buffer, contentType: String},
     rating: {type: Number, min: 0, max: 120, required: true},
-    reviews: [reviews.schema],
+    reviews: [reviews],
     tags: [String]
 });
 
 var Game = mongoose.model('Game', gamesSchema);
 
-module.exports.seedInitialCourses = function() {
-    Games.find({}).exec(function(err, collection) {
+module.exports.seedInitialGames = function() {
+    Game.find({}).exec(function(err, collection) {
         if (err) {
             console.log('Cannot find games: ' + err);
             return;
@@ -34,6 +35,7 @@ module.exports.seedInitialCourses = function() {
                 platforms: ['PC', 'PS4', 'Xbox One'], rating: '0', reviews: {}});
             Game.create({title: 'The Witcher 3: Wild Hunt', featured: true, released: new Date('18/5/2015'), tags: ['RPG', 'Open World', 'Story Rich', 'Atmospheric'],
                 platforms: ['PC', 'PS4', 'Xbox One'], rating: '0', reviews: {}});
+            console.log('Games added to database...');
         }
     });
 };
