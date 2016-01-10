@@ -1,0 +1,1 @@
+<div ng-repeat="game in games | orderBy: '-released' | limitTo: 10"><div class="row"><div class="col-md-3">{{ game.released | date: 'MMM d yyyy' }}</div><div class="col-md-9"><a href="#/games/{{ game._id }}">{{ game.title }}</a></div></div></div>
