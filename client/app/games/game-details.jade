@@ -1,8 +1,10 @@
 .container
     h2 {{ game.title }}
     p {{ game.released | date }}
-    p {{game.rating}}
-    a (href=game.img)
+    p Rating: {{game.rating}}
+    div
+        img(src="{{game.image}}")
+
     ul
         li(ng-repeat="tag in game.tags") {{ tag }}
     ul
