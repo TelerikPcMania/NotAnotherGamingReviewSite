@@ -1,0 +1,11 @@
+.container
+    h2 {{ game.title }}
+    p {{ game.released | date }}
+    p {{game.rating}}
+    a (href=game.img)
+    ul
+        li(ng-repeat="tag in game.tags") {{ tag }}
+    ul
+        li(ng-repeat="platform in game.platforms") {{ platform }}
+    ul
+        li(ng-repeat="review in game.reviews") {{ review.text }}

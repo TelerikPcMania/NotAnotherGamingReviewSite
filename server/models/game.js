@@ -37,5 +37,6 @@ module.exports.seedInitialGames = function() {
                 platforms: ['PC', 'PS4', 'Xbox One'], rating: '0', reviews: {}});
             console.log('Games added to database...');
         }
+
     });
 };

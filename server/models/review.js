@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var reviewsSchema = mongoose.Schema({
     gameTitle: String,
-    description: String,
+    text: String,
     featured: Boolean,
     published: Date,
     tags: [String],
