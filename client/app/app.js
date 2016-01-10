@@ -24,7 +24,7 @@ app.config(function($routeProvider) {
             templateUrl: '/partials/games/games-list',
             controller: 'GamesListCtrl'
         })
-        .when('/courses/:id', {
+        .when('/games/:id', {
             templateUrl: '/partials/games/game-details',
             controller: 'GameDetailsCtrl'
         })
