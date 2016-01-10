@@ -1,13 +1,22 @@
 .container
-    .jumbotron
-        h1 PC Mania Games
-        h2 Best game reviews out there
-    .row
-        .col-md-6
-            .panel.panel-info
-                .panel-heading.text-center Featured Games
-                .panel-body(ng-include="'/partials/main/featured-games'")
-        .col-md-6
-            .panel.panel-info
-                .panel-heading.text-center New
-                .panel-body(ng-include="'/partials/main/new-games'")
+#myCarousel.carousel.slide(data-ride='carousel')
+    // Indicators
+    ol.carousel-indicators(ng-repeat="game in games")
+        li.active(data-target='#myCarousel', data-slide-to='0')
+        li(data-target='#myCarousel', data-slide-to='{{game.id}}')
+    .carousel-inner(ng-repeat="game in games")
+        .item.active
+            img(src="{{game.image}}")
+            .container
+                .carousel-caption
+                    h1 {{game.title}}
+                    p Rating: {{game.rating}}
+
+                    p
+                        a.btn.btn-lg.btn-primary(href="#/games/{{ game._id }}", role='button') View Details
+
+    a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+        span.glyphicon.glyphicon-chevron-left
+    a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+        span.glyphicon.glyphicon-chevron-right
+// /.carousel
