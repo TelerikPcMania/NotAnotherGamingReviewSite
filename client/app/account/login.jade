@@ -16,5 +16,7 @@
                     a(href="#/admin/users") Users
                 li(ng-show="identity.isAuthenticated()")
                     a(href="#/profile") {{identity.currentUser.username}}'s Profile
+                li(ng-show="identity.isAuthenticated()")
+                    a(href="#" ng-click="") Add Game
                 li
                     a(href="#" ng-click="logout()") Sign Out
