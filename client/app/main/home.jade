@@ -1,22 +1,28 @@
 .container
-#myCarousel.carousel.slide(data-ride='carousel')
-    // Indicators
-    ol.carousel-indicators(ng-repeat="game in games")
-        li.active(data-target='#myCarousel', data-slide-to='0')
-        li(data-target='#myCarousel', data-slide-to='{{game.id}}')
-    .carousel-inner(ng-repeat="game in games")
-        .item.active
-            img(src="{{game.image}}")
-            .container
-                .carousel-caption
-                    h1 {{game.title}}
-                    p Rating: {{game.rating}}
-
-                    p
+    #myCarousel.carousel.slide(data-ride='carousel', interval='myInterval', no-wrap='noWrapSlides')
+        // Indicators
+        ol.carousel-indicators
+            li.active(data-target='#myCarousel', data-slide-to='0')
+            li(data-target='#myCarousel', data-slide-to='1')
+            li(data-target='#myCarousel', data-slide-to='2')
+            li(data-target='#myCarousel', data-slide-to='3')
+            li(data-target='#myCarousel', data-slide-to='4')
+        .carousel-inner
+            .item.active
+                img(src="http://www.puremzine.com/wp-content/uploads/2015/10/Best-Games.jpg")
+                .container
+                    .carousel-caption
+                        h1 PC Mania
+                        p The Best Game Reviews out there!
+                            p
+                        a.btn.btn-lg.btn-primary(href="#/games", role='button') View All Games
+                            .item(ng-repeat="game in games | orderBy: '-released' | limitTo: 4")
+                img(src="{{game.image}}")
+                .container
+                    .carousel-caption
+                        h1 {{game.title}}
+                        p Rating: {{game.rating}}
+                            p
                         a.btn.btn-lg.btn-primary(href="#/games/{{ game._id }}", role='button') View Details
-
-    a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
-        span.glyphicon.glyphicon-chevron-left
-    a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
-        span.glyphicon.glyphicon-chevron-right
-// /.carousel
+                            // /.carousel
+                                                                                                                                          
