@@ -47,6 +47,10 @@ app.config(function($routeProvider, $locationProvider) {
             controller: 'UserListCtrl',
             resolve: routeUserChecks.adminRole
         })
+        .otherwise({
+            templateUrl: '/partials/main/404',
+            controller: 'PageNotFoundCtrl'
+        })
 });
 
 app.run(function($rootScope, $location) {
