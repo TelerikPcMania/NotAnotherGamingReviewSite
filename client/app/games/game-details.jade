@@ -2,7 +2,11 @@
     h2 {{ game.title }}
     p Released: {{ game.released | date }}
     p Rating: {{game.rating}}
-    a.btn.btn-sm.btn-primary(href="#/games/{{ game._id }}/add-rating", role='button') Rate
+    select.rating
+        each val in [1, 2, 3, 4, 5]
+            option(value=val, name="rating")= val
+
+    a.btn.btn-sm.btn-primary(href="#/games/{{ game._id }}/add-rating", role='submit') Rate
     div.img-container
         img(src="{{game.image}}")
 
