@@ -30,7 +30,7 @@ app.config(function($routeProvider, $locationProvider) {
         })
         .when('/add-game', {
             templateUrl: '/partials/games/add-game',
-            controller: 'GameDetailsCtrl',
+            controller: 'AddGameCtrl',
             resolve: routeUserChecks.authenticated
         })
         .when('/signup', {
@@ -47,6 +47,9 @@ app.config(function($routeProvider, $locationProvider) {
             controller: 'UserListCtrl',
             resolve: routeUserChecks.adminRole
         })
+        .when('/403',{
+            templateUrl: '/partials/main/403'
+        })
         .otherwise({
             templateUrl: '/partials/main/404',
             controller: 'PageNotFoundCtrl'
@@ -55,7 +58,11 @@ app.config(function($routeProvider, $locationProvider) {
 
 app.run(function($rootScope, $location) {
     $rootScope.$on('$routeChangeError', function(ev, current, previous, rejection) {
-        if (rejection === 'not authorized') {
+        if (rejection == '403') {
+            $location.rejectPath = current.templateUrl.split('/').pop();
+            $location.path('/403');
+        }
+        if(rejection == 'adminRole'){
             $location.path('/');
         }
     })

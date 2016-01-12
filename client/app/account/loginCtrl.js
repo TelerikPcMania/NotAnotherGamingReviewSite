@@ -5,6 +5,9 @@ app.controller('LoginCtrl', function($scope, $location, notifier, identity, auth
         auth.login(user).then(function(success) {
             if (success) {
                 notifier.success('Greetings ' + user.username + '!');
+                if($location.rejectPath){
+                    $location.path($location.rejectPath);
+                }
             }
             else {
                 notifier.error('Username/Password combination is not valid!');
