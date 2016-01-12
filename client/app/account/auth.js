@@ -60,7 +60,7 @@ app.factory('auth', function($http, $q, identity, UsersResource) {
                 return true;
             }
             else {
-                return $q.reject('not authorized');
+                return $q.reject('403');
             }
         },
         isAuthorizedForRole: function(role) {
@@ -68,7 +68,7 @@ app.factory('auth', function($http, $q, identity, UsersResource) {
                 return true;
             }
             else {
-                return $q.reject('not authorized');
+                return $q.reject('adminRole');
             }
         }
     }

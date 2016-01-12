@@ -16,6 +16,10 @@ module.exports = function(app) {
         res.render('../../client/app/' + req.params.partialArea + '/' + req.params.partialName)
     });
 
+    app.get('/403', function(req, res) {
+        res.render('403');
+    });
+
     app.get('*', function(req, res) {
         res.render('index', {currentUser: req.user});
     });
