@@ -26,6 +26,7 @@ module.exports = function(app) {
 
     app.get('/api/games', controllers.games.getAllGames);
     app.get('/api/games/:id', controllers.games.getGamesById);
+    app.put('/api/games/:id', controllers.games.put);
     app.post('/api/games/add-game', upload.single('image-file'), controllers.games.post);
 
     app.post('/login', auth.login);
