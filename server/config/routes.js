@@ -5,7 +5,7 @@ var auth = require('./auth'),
     multer = require('multer');
 
 var storage = multer.diskStorage({
-    destination: '../public/images',
+    destination: './server/public/images',
     filename: function(req, file, cb) {
         console.log(file);
         let ext = file.originalname.split('.')

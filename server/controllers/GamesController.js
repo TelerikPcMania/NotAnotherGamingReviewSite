@@ -26,7 +26,7 @@ module.exports = {
         console.log(req.file);
 
         if (!reqGame.image && req.file) {
-            reqGame.image = req.file.path.substr('../public'.length);
+            reqGame.image = req.file.path.substr('server/public'.length);
         }
 
         let game = new Game({
@@ -46,7 +46,7 @@ module.exports = {
             }
 
             res.status(201)
-                .redirect('/api/games/' + game._id);
+                .redirect('/games/' + game._id);
         });
     }
 };
