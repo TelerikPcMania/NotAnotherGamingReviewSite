@@ -1,8 +1,8 @@
 var Game = require('mongoose').model('game');
 
 module.exports = {
-    getAllGames: function(req, res, next) {
-        Game.find({}).exec(function(err, collection) {
+    getAllGames: function (req, res, next) {
+        Game.find({}).exec(function (err, collection) {
             if (err) {
                 console.log('Games could not be loaded: ' + err);
             }
@@ -10,8 +10,8 @@ module.exports = {
             res.send(collection);
         })
     },
-    getGamesById: function(req, res, next) {
-        Game.findOne({_id: req.params.id}).exec(function(err, game) {
+    getGamesById: function (req, res, next) {
+        Game.findOne({_id: req.params.id}).exec(function (err, game) {
             if (err) {
                 console.log('Game could not be loaded: ' + err);
             }
@@ -19,7 +19,7 @@ module.exports = {
             res.send(game);
         })
     },
-    post: function(req, res) {
+    post: function (req, res) {
         var reqGame = req.body;
         console.log(req.file);
 
@@ -38,7 +38,7 @@ module.exports = {
             tags: []
         });
 
-        game.save(function(err) {
+        game.save(function (err) {
             if (err) {
                 throw err;
             }
@@ -48,10 +48,22 @@ module.exports = {
         });
     },
 
-    put: function(req, res) {
+    put: function (req, res) {
         var rating = req.body;
-        console.log(rating);
-        console.log(req.params.id);
+        Game.findOne({_id: req.params.id}).exec(function (err, game) {
+            if (err) {
+                console.log('Game could not be loaded: ' + err);
+            }
 
+            game.rating += +rating.rating;
+            game.save(function (err) {
+                if (err) {
+                    console.log('Game rating couldn/t be saved: ' + err);
+                }
+
+                res.status(200);
+            })
+
+        })
     }
 };

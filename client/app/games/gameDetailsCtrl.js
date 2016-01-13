@@ -14,9 +14,11 @@ app.controller('GameDetailsCtrl', function ($scope, $routeParams, $q, $location,
 
         $http.put('/api/games/' + $routeParams.id, rating)
             .success(function (response) {
+                notifier.success('Game rated successfully!');
             if (response.success) {
                 notifier.success('Game rated successfully!');
                 deferred.resolve(true);
+
             }
             else {
                 notifier.error('Failed to rate the game!');
