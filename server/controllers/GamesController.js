@@ -1,4 +1,6 @@
-var Game = require('mongoose').model('game');
+'use strict';
+
+let Game = require('mongoose').model('game');
 
 module.exports = {
     getAllGames: function(req, res, next) {
@@ -18,5 +20,33 @@ module.exports = {
 
             res.send(game);
         })
+    },
+    post: function(req, res) {
+        let reqGame = req.body;
+        console.log(req.file);
+
+        if (!reqGame.image && req.file) {
+            reqGame.image = req.file.path.substr('../public'.length);
+        }
+
+        let game = new Game({
+            title: reqGame.title,
+            featured: true,
+            released: reqGame.released,
+            platforms: [],
+            image: reqGame.image,
+            rating: +0,
+            review: [],
+            tags: []
+        });
+
+        game.save(function(err) {
+            if (err) {
+                throw err;
+            }
+
+            res.status(201)
+                .redirect('/api/games/' + game._id);
+        });
     }
 };

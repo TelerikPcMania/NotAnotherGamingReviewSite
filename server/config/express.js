@@ -1,4 +1,8 @@
+'use strict';
+
 var express = require('express'),
+    fs = require('fs'),
+    path = require('path'),
     stylus = require('stylus'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
@@ -9,6 +13,9 @@ module.exports = function(app, config) {
     app.set('view engine', 'jade');
     app.set('views', config.rootPath + '/server/views');
     app.use(cookieParser());
+
+    app.use(express.static(path.join(__dirname, '../public')));
+
     app.use(bodyParser.urlencoded({
         extended: true
     }));

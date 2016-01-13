@@ -2,7 +2,7 @@
     .well
         div
             h1 Add new game
-            form.form-horizontal(action="/add-game", method="POST", enctype="multipart/form-data")
+            form.form-horizontal(action="api/games/add-game", method="POST", enctype="multipart/form-data")
                 .form-group
                     label.col-md-2.control-label(for="tb-title")
                         | Title:
@@ -41,7 +41,6 @@
                     button.btn.btn-success.pull-right.col-md-2#btnSelected Add game
         script(type="text/javascript").
             $(document).ready(function () {
-                // create MultiSelect from select HTML element
                 var date = $("#tb-release").kendoDatePicker({ format: "dd MMMM yyyy" })
                         .data("kendoDatePicker");
                 var optional = $("#tb-platforms").kendoMultiSelect({
