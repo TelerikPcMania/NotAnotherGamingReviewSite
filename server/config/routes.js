@@ -1,5 +1,23 @@
+'use strict';
+
 var auth = require('./auth'),
-    controllers = require('../controllers');
+    controllers = require('../controllers'),
+    multer = require('multer');
+
+var storage = multer.diskStorage({
+    destination: './server/public/images',
+    filename: function(req, file, cb) {
+        console.log(file);
+        let ext = file.originalname.split('.')
+            .pop();
+        cb(null, file.fieldname + '-' + Date.now() + '.' + ext);
+    }
+});
+
+var upload = multer({
+    storage: storage
+});
+
 //TODO: modify routes if needed
 module.exports = function(app) {
     app.get('/api/users', auth.isInRole('admin'), controllers.users.getAllUsers);
@@ -8,6 +26,7 @@ module.exports = function(app) {
 
     app.get('/api/games', controllers.games.getAllGames);
     app.get('/api/games/:id', controllers.games.getGamesById);
+    app.post('/api/games/add-game', upload.single('image-file'), controllers.games.post);
 
     app.post('/login', auth.login);
     app.post('/logout', auth.logout);

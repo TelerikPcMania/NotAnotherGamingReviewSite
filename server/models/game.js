@@ -7,7 +7,7 @@ var gamesSchema = mongoose.Schema({
     featured: Boolean,
     released: Date,
     platforms: [String],
-    image: String, //{ data: Buffer, contentType: String},
+    image: String,
     rating: {type: Number, min: 0, max: 120, required: true},
     reviews: [reviews],
     tags: [String]
