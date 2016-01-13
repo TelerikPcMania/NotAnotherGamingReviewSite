@@ -1,12 +1,54 @@
 .container
     .well
-        form.form-horizontal(name="addGameForm")
-            fieldset
-                legend Add new game
+        div
+            h1 Add new game
+            form.form-horizontal(action="/add-game", method="POST", enctype="multipart/form-data")
                 .form-group
-                    label.col-md-2.control-label(for="game-title") Game Title
+                    label.col-md-2.control-label(for="tb-title")
+                        | Title:
                     .col-md-10
-                        input.form-control(id ="game-title", type="text", placeholder="Game Title", ng-model="", required)
-                .pull-right
-                    //-button.btn.btn-primary(ng-click="", ng-disabled="profileForm.$invalid") Add
-                    a.btn.btn-primary(href="#/") Cancel
+                        input.form-control#tb-name(name="title", placeholder="Title")
+                .form-group
+                    label.col-md-2.control-label(for="tb-release")
+                        | Release Date:
+                    .col-md-4
+                        input.form-control#tb-release(name="release", placeholder="Release date")
+                .form-group
+                    label.col-md-2.control-label(for="tb-platforms")
+                        | Platforms:
+                    .col-md-6
+                        select.form-control#tb-platforms(multiple="multiple")
+                            option(value="pc") PC
+                            option(value="xbox-one") Xbox One
+                            option(value="ps3") PS3
+                            option(value="ps4") PS4
+                .form-group
+                    label.col-md-2.control-label(for="tb-tags")
+                        | Tags:
+                    .col-md-10
+                        input.form-control#tb-price(type="text", name="tags", placeholder="Tags")
+                .form-group
+                    label.col-md-2.control-label(for="tb-image")
+                        | Image:
+                    .col-md-10
+                        input.form-control#tb-image(type="text", name="image", placeholder="Image url")
+                .form-group
+                    label.col-md-2.control-label(for="tb-image-file")
+                        | Image Upload:
+                    .col-md-10
+                        input.form-control#tb-image-file(type="file", name="image-file", placeholder="Image url")
+                .form-group
+                    button.btn.btn-success.pull-right.col-md-2#btnSelected Add game
+        script(type="text/javascript").
+            $(document).ready(function () {
+                // create MultiSelect from select HTML element
+                var date = $("#tb-release").kendoDatePicker({ format: "dd MMMM yyyy" })
+                        .data("kendoDatePicker");
+                var optional = $("#tb-platforms").kendoMultiSelect({
+                    autoClose: false
+                }).data("kendoMultiSelect");
+                $("#btnSelected").click(function () {
+                    alert("Selected platforms and date:\n\n"+ optional.value() + '  '+kendo.toString(date.value(), "MM/dd/yyyy"));
+                });
+            });
+
