@@ -2,7 +2,14 @@
     h2 {{ game.title }}
     p Released: {{ game.released | date }}
     p Rating: {{game.rating}}
-    div
+    form.form-horizontal(action="api/games/:id", method="PUT", enctype="multipart/form-data")
+        select.rating(ng-model="rating")
+            each val in [1, 2, 3, 4, 5]
+                option(value=val)= val
+
+        b.btn.btn-sm.btn-default(ng-click="rateGame(rating)") Rate
+
+    div.img-container
         img(src="{{game.image}}")
 
     ul.games Tags:
@@ -11,3 +18,4 @@
         li(ng-repeat="platform in game.platforms")  {{ platform }}
     ul.games Reviews:
         li(ng-repeat="review in game.reviews")  {{ review.text }}
+    a.btn.btn-md.btn-primary(href="#/games/{{ game._id }}/add-review", role='button') Add a Review

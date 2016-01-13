@@ -46,5 +46,11 @@ module.exports = {
             res.status(201)
                 .redirect('/games/' + game._id);
         });
+    },
+
+    addRating: function(req, res) {
+        var rating = req.body;
+        console.log(rating);
+
     }
 };
