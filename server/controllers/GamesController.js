@@ -48,9 +48,10 @@ module.exports = {
         });
     },
 
-    addRating: function(req, res) {
+    put: function(req, res) {
         var rating = req.body;
         console.log(rating);
+        console.log(req.params.id);
 
     }
 };

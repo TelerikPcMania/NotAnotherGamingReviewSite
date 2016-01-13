@@ -1,4 +1,4 @@
-app.controller('GameDetailsCtrl', function ($scope, $routeParams, cachedGames, $q, $location, $http, notifier) {
+app.controller('GameDetailsCtrl', function ($scope, $routeParams, $q, $location, $http,  notifier, cachedGames) {
 
     $scope.game = cachedGames.query().$promise.then(function (collection) {
         collection.forEach(function (game) {
@@ -7,11 +7,13 @@ app.controller('GameDetailsCtrl', function ($scope, $routeParams, cachedGames, $
             }
         })
     });
+
     $scope.rateGame = function (rating) {
-        console.log(rating);
         var deferred = $q.defer();
 
-        $http.put('/api/games/:id', rating).success(function (response) {
+
+        $http.put('/api/games/' + $routeParams.id, rating)
+            .success(function (response) {
             if (response.success) {
                 notifier.success('Game rated successfully!');
                 deferred.resolve(true);

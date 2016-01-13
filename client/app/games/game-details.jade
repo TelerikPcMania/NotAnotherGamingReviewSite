@@ -3,11 +3,11 @@
     p Released: {{ game.released | date }}
     p Rating: {{game.rating}}
     form.form-horizontal(action="api/games/:id", method="PUT", enctype="multipart/form-data")
-        select.rating(ng-model="rating")
+        select.rating(ng-model="currentGame.rating")
             each val in [1, 2, 3, 4, 5]
                 option(value=val)= val
 
-        b.btn.btn-sm.btn-default(ng-click="rateGame(rating)") Rate
+        b.btn.btn-sm.btn-default(ng-click="rateGame(currentGame)") Rate
 
     div.img-container
         img(src="{{game.image}}")
