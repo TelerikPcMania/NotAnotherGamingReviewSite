@@ -30,12 +30,12 @@ module.exports = {
         var game = new Game({
             title: reqGame.title,
             featured: true,
-            released: reqGame.released,
-            platforms: [],
+            released: reqGame.release,
+            platforms: reqGame.platforms,
             image: reqGame.image,
             rating: +0,
             review: [],
-            tags: []
+            tags: reqGame.tags
         });
 
         game.save(function (err) {
@@ -44,7 +44,7 @@ module.exports = {
             }
 
             res.status(201)
-                .redirect('/games/' + game._id);
+                .redirect('/' + game._id);
         });
     },
 
