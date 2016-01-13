@@ -1,6 +1,4 @@
-'use strict';
-
-let Game = require('mongoose').model('game');
+var Game = require('mongoose').model('game');
 
 module.exports = {
     getAllGames: function(req, res, next) {
@@ -22,14 +20,14 @@ module.exports = {
         })
     },
     post: function(req, res) {
-        let reqGame = req.body;
+        var reqGame = req.body;
         console.log(req.file);
 
         if (!reqGame.image && req.file) {
             reqGame.image = req.file.path.substr('server/public'.length);
         }
 
-        let game = new Game({
+        var game = new Game({
             title: reqGame.title,
             featured: true,
             released: reqGame.released,
