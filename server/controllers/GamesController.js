@@ -34,7 +34,7 @@ module.exports = {
             platforms: reqGame.platforms,
             image: reqGame.image,
             rating: +0,
-            review: [],
+            reviews: [],
             tags: reqGame.tags
         });
 
