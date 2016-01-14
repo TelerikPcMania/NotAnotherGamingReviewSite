@@ -18,7 +18,7 @@ var upload = multer({
     storage: storage
 });
 
-//TODO: modify routes if needed
+
 module.exports = function(app) {
     app.get('/api/users', auth.isInRole('admin'), controllers.users.getAllUsers);
     app.post('/api/users', controllers.users.createUser);
