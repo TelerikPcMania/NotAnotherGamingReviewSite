@@ -31,7 +31,8 @@ app.config(function($routeProvider, $locationProvider) {
 
         .when('/games/:id/add-review', {
             templateUrl: 'partials/reviews/add-review',
-            controller: 'AddReviewController'
+            controller: 'AddReviewController',
+            resolve: routeUserChecks.authenticated
         })
 
         .when('/add-game', {
