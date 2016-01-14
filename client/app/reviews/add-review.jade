@@ -1,0 +1,12 @@
+.container
+    .well
+        div
+            h1 Write a review
+            form.form-horizontal
+                .form-group
+                    label.col-md-2.control-label(for="tb-text")
+                        | Text:
+                    .col-md-10
+                        textarea.form-control#tb-text(name="text", ng-model="review.text", placeholder="Text")
+                .form-group
+                    button.btn.btn-default.pull-right.col-sm-1#addReview(ng-click="addReview(review)") Add review

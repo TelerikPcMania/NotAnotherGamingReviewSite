@@ -30,7 +30,7 @@ app.config(function($routeProvider, $locationProvider) {
         })
 
         .when('/games/:id/add-review', {
-            templateUrl: 'partials/games/add-review',
+            templateUrl: 'partials/reviews/add-review',
             controller: 'AddReviewController'
         })
 

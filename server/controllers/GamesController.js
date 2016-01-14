@@ -48,7 +48,7 @@ module.exports = {
         });
     },
 
-    put: function (req, res) {
+    addRating: function (req, res) {
         var rating = req.body;
         Game.findOne({_id: req.params.id}).exec(function (err, game) {
             if (err) {
@@ -62,6 +62,33 @@ module.exports = {
                 }
 
                 res.status(200);
+            })
+
+        })
+    },
+
+    addReview: function (req, res) {
+        var review = req.body;
+        console.log(review);
+        Game.findOne({_id: req.params.id}).exec(function (err, game) {
+            if (err) {
+                console.log('Game could not be loaded: ' + err);
+            }
+
+            game.reviews.push({
+                gameTitle: game.title,
+                text: review.text,
+                featured: true,
+                published: new Date(),
+                author_id: req.params.user_id
+            });
+
+            game.save(function (err) {
+                if (err) {
+                    console.log('Game review couldn/t be added: ' + err);
+                }
+
+                res.status(201);
             })
 
         })
