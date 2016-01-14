@@ -1,4 +1,4 @@
-app.controller('AddReviewController', function ($scope, $routeParams, $q, $location, $http,  notifier, cachedGames) {
+app.controller('AddReviewController', function ($scope, $routeParams, $q, $location, $http,  notifier) {
 
     $scope.addReview = function (review) {
         var deferred = $q.defer();

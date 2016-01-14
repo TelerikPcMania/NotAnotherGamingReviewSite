@@ -1,4 +1,4 @@
-.container(ng-controller="LoginCtrl")
+.container(ng-controller="GameDetailsCtrl")
     .row
         .col-md-2
             a.btn.btn-primary(href='#/add-game', ng-show="identity.isAuthenticated()") Add Game
@@ -15,9 +15,12 @@
     table.table
         tr
             th Title
+            th
             th Released
         tr(ng-repeat="game in games | filter: search | orderBy: sort")
             td
                 a(href="#/games/{{ game._id }}") {{ game.title }}
+            td(width="20%", height="20%")
+                img.img-thumbnail(src="{{game.image}}")
             td {{ game.released | date }}
 

@@ -1,4 +1,5 @@
-app.controller('GameDetailsCtrl', function ($scope, $routeParams, $q, $location, $http,  notifier, cachedGames) {
+app.controller('GameDetailsCtrl', function ($scope, $routeParams, $q, $location, $http,  notifier, cachedGames, identity) {
+    $scope.identity = identity;
 
     $scope.game = cachedGames.query().$promise.then(function (collection) {
         collection.forEach(function (game) {
