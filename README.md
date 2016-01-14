@@ -43,15 +43,15 @@
 
 
 ###Server Routes description:
-- Route	                                         Method	         Description
-    - /	                                          GET	          Home page
-    - /api/users	                              GET	          All users
-    - /api/users	                              POST	          Create user
-    - /api/games                                  GET             Get all games
-    - /api/games/:id                              GET             Get a game by id
-    - /api/games/:id                              PUT             Rate a game
-    - /api/games/:id/add-review                   POST            Add a review to the game
-    - /api/games/:id/delete-review/:review_id     DELETE          Delete a review
-    - /api/games/add-game                         POST            Add a game
-    - /login                                      POST            Login user
-    - /logout                                     POST            Logout user
+   - Route	                                    - Method	    - Description
+    - /	                                          - GET	          - Home page
+    - /api/users	                              - GET	          - All users
+    - /api/users	                              - POST	      - Create user
+    - /api/games                                  - GET           - Get all games
+    - /api/games/:id                              - GET           - Get a game by id
+    - /api/games/:id                              - PUT           - Rate a game
+    - /api/games/:id/add-review                   - POST          - Add a review to the game
+    - /api/games/:id/delete-review/:review_id     - DELETE        - Delete a review
+    - /api/games/add-game                         - POST          - Add a game
+    - /login                                      - POST          - Login user
+    - /logout                                     - POST          - Logout user
