@@ -79,7 +79,7 @@ module.exports = {
                 text: review.text,
                 featured: true,
                 published: new Date(),
-                author_id: req.params.user_id
+                author_id: req.params.username
             });
 
             game.reviews.push(gameReview);
