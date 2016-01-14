@@ -93,5 +93,25 @@ module.exports = {
             })
 
         })
+    },
+
+    deleteReview: function (req, res) {
+        var review = req.params;
+        console.log(review);
+        console.log(req.params.review_id);
+
+        Review.findOne({_id: req.params.review_id}).exec(function (err, review) {
+            if (err) {
+                console.log('Review could not be loaded: ' + err);
+            }
+
+            else if(review === null){
+                console.log('Review could not be found');
+            }
+
+            console.log('Review: ' + review);
+            res.status(200);
+        });
+
     }
 };

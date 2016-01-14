@@ -28,6 +28,7 @@ module.exports = function(app) {
     app.get('/api/games/:id', controllers.games.getGamesById);
     app.put('/api/games/:id', auth.isAuthenticated, controllers.games.addRating);
     app.post('/api/games/:id/add-review', auth.isAuthenticated, controllers.games.addReview);
+    app.delete('/api/games/:id/delete-review/:review_id', auth.isInRole('admin'), controllers.games.deleteReview);
     app.post('/api/games/add-game', upload.single('image-file'), controllers.games.post);
 
     app.post('/login', auth.login);
