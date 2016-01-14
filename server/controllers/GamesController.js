@@ -93,5 +93,32 @@ module.exports = {
             })
 
         })
+    },
+
+    deleteReview: function (req, res) {
+        var review = req.body;
+        Review.findOne({_id: req.params.reviewId}).exec(function (err, review) {
+            if (err) {
+                console.log('Review could not be loaded: ' + err);
+            }
+
+
+            game.reviews.remove(review)(function (err) {
+                if (err) {
+                    console.log('Review couldnt be deleted ' + err);
+                }
+
+                res.status(200);
+            });
+
+            game.save(function (err) {
+                if (err) {
+                    console.log('Game review couldn/t be added: ' + err);
+                }
+
+                res.status(200);
+            })
+
+        })
     }
 };
