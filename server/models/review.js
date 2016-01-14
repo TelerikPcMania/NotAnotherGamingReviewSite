@@ -5,7 +5,6 @@ var reviewsSchema = mongoose.Schema({
     text: String,
     featured: Boolean,
     published: Date,
-    tags: [String],
     author_id: Number
 });
 

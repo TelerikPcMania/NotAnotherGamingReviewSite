@@ -28,6 +28,12 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: '/partials/games/game-details',
             controller: 'GameDetailsCtrl'
         })
+
+        .when('/games/:id/add-review', {
+            templateUrl: 'partials/games/add-review',
+            controller: 'AddReviewController'
+        })
+
         .when('/add-game', {
             templateUrl: '/partials/games/add-game',
             controller: 'AddGameCtrl',
