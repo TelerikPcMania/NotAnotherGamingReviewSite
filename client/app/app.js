@@ -28,10 +28,6 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: '/partials/games/game-details',
             controller: 'GameDetailsCtrl'
         })
-        .when('/games/:tags', {
-            templateUrl: '/partials/games/game-details',
-            controller: 'GameDetailsCtrl'
-        })
         .when('/add-game', {
             templateUrl: '/partials/games/add-game',
             controller: 'AddGameCtrl',
