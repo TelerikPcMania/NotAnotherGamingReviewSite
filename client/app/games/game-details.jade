@@ -13,9 +13,11 @@
         img(src="{{game.image}}")
 
     ul.games Tags:
-        li(ng-repeat="tag in game.tags")  {{ tag }}
+        li(ng-repeat="tag in game.tags")
+            a(href="/api/games/"+"{{ tag }}" ) {{ tag }}
     ul.games Platforms:
-        li(ng-repeat="platform in game.platforms")  {{ platform }}
+        li(ng-repeat="platform in game.platforms")
+            a(href="/api/games/"+"{{ platform }}") {{ platform }}
     ul.games Reviews:
         li(ng-repeat="review in game.reviews")  {{ review.text }}
     a.btn.btn-md.btn-primary(href="#/games/{{ game._id }}/add-review", role='button') Add a Review

@@ -1,7 +1,7 @@
 var Game = require('mongoose').model('game');
 
 module.exports = {
-    getAllGames: function (req, res, next) {
+    getAllGames: function (req, res) {
         Game.find({}).exec(function (err, collection) {
             if (err) {
                 console.log('Games could not be loaded: ' + err);
@@ -10,10 +10,19 @@ module.exports = {
             res.send(collection);
         })
     },
-    getGamesById: function (req, res, next) {
+    getGamesById: function (req, res) {
         Game.findOne({_id: req.params.id}).exec(function (err, game) {
             if (err) {
                 console.log('Game could not be loaded: ' + err);
+            }
+
+            res.send(game);
+        })
+    },
+    getGamesByTag: function(req, res){
+        Game.find({tags: {$in: req.params.tags}}).exec(function(err, game){
+            if(err){
+                console.log('Tags could not be loaded: ' + err);
             }
 
             res.send(game);
@@ -26,7 +35,7 @@ module.exports = {
         if (!reqGame.image && req.file) {
             reqGame.image = req.file.path.substr('server/public'.length);
         }
-
+        var tagsList = reqGame.tags.split(',');
         var game = new Game({
             title: reqGame.title,
             featured: true,
@@ -35,7 +44,7 @@ module.exports = {
             image: reqGame.image,
             rating: +0,
             review: [],
-            tags: reqGame.tags
+            tags: tagsList
         });
 
         game.save(function (err) {
@@ -44,7 +53,7 @@ module.exports = {
             }
 
             res.status(201)
-                .redirect('/' + game._id);
+                .redirect('/');
         });
     },
 
