@@ -26,6 +26,7 @@
     .row
         .col-md-12
             .reviews Reviews:
-                .well(ng-repeat="review in game.reviews | orderBy: '-published'")  {{ review.text }}
+                .well
                     a.btn.btn-md.btn-primary.pull-right( href="#/games/{{ game._id }}/delete-review{{review._id}}" role='button') Delete Review
                     a.btn.btn-md.btn-primary(href="#/games/{{ game._id }}/add-review", role='button') Add a Review
+                .well(ng-repeat="review in game.reviews | orderBy: '-published'")  {{ review.text }}
