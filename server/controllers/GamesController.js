@@ -44,7 +44,7 @@ module.exports = {
             }
 
             res.status(201)
-                .redirect('/' + game._id);
+                .redirect('../../#/games/' + game._id);
         });
     },
 
