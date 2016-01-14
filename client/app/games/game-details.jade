@@ -17,6 +17,6 @@
     ul.games Platforms:
         li(ng-repeat="platform in game.platforms")  {{ platform }}
     .reviews Reviews:
-        div(ng-repeat="review in game.reviews")  {{ review.text }}
-            b.btn.btn-md.btn-primary(role='button') Delete Review
+        .well(ng-repeat="review in game.reviews")  {{ review.text }}
+            b.btn.btn-md.btn-primary.pull-right(role='button') Delete Review
     a.btn.btn-md.btn-primary(href="#/games/{{ game._id }}/add-review", role='button') Add a Review
