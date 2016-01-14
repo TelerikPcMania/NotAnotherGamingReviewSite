@@ -20,6 +20,9 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: '/partials/main/home',
             controller: 'MainCtrl'
         })
+        .when('/about',{
+            templateUrl: '/partials/main/about'
+        })
         .when('/games', {
             templateUrl: '/partials/games/games-list',
             controller: 'GamesListCtrl'
