@@ -96,29 +96,22 @@ module.exports = {
     },
 
     deleteReview: function (req, res) {
-        var review = req.body;
-        Review.findOne({_id: req.params.reviewId}).exec(function (err, review) {
+        var review = req.params;
+        console.log(review);
+        console.log(req.params.review_id);
+
+        Review.findOne({_id: req.params.review_id}).exec(function (err, review) {
             if (err) {
                 console.log('Review could not be loaded: ' + err);
             }
 
+            else if(review === null){
+                console.log('Review could not be found');
+            }
 
-            game.reviews.remove(review)(function (err) {
-                if (err) {
-                    console.log('Review couldnt be deleted ' + err);
-                }
+            console.log('Review: ' + review);
+            res.status(200);
+        });
 
-                res.status(200);
-            });
-
-            game.save(function (err) {
-                if (err) {
-                    console.log('Game review couldn/t be added: ' + err);
-                }
-
-                res.status(200);
-            })
-
-        })
     }
 };

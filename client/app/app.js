@@ -35,7 +35,7 @@ app.config(function($routeProvider, $locationProvider) {
             resolve: routeUserChecks.authenticated
         })
 
-        .when('/games/:id/delete-review/:reviewId', {
+        .when('/games/:id/delete-review/:review_id', {
             templateUrl: 'partials/reviews/delete-review',
             controller: 'DeleteReviewController',
             resolve: routeUserChecks.adminRole
