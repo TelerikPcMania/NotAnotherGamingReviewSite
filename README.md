@@ -37,3 +37,5 @@
   - '/' - Home page route.
   - '/404' - Page not found route.
   - '/403' - Unauthorized access page.
+  - '/games' - Games list page.
+  - '/games/:id' - Game details by Id.
