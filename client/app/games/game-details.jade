@@ -14,12 +14,14 @@
                 fieldset
                     legend Tags:
                     ul.games
-                        li(ng-repeat="tag in game.tags")  {{ tag }}
+                        li(ng-repeat="tag in game.tags")
+                            a(href="#/") {{ tag }}
             .well
                 fieldset
                     legend Platforms:
                     ul.games
-                        li(ng-repeat="platform in game.platforms")  {{ platform }}
+                        li(ng-repeat="platform in game.platforms")
+                            a(href="#/") {{ platform }}
     .col-md-8
         div.img-container
             img.img-rounded(src="{{game.image}}")

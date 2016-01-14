@@ -97,10 +97,10 @@ module.exports = {
 
     deleteReview: function (req, res) {
         var review = req.params;
-        console.log(review);
-        console.log(req.params.review_id);
+        console.log('Here: ' + review.id);
+        console.log('Here again: ' + req.params.review_id);
 
-        Review.findOne({_id: req.params.review_id}).exec(function (err, review) {
+        Game.update({_id: req.params.id}, {$pull: {reviews: {_id: req.params.review_id}}}).exec(function (err, par, review) {
             if (err) {
                 console.log('Review could not be loaded: ' + err);
             }
@@ -109,7 +109,7 @@ module.exports = {
                 console.log('Review could not be found');
             }
 
-            console.log('Review: ' + review);
+            console.log(review);
             res.status(200);
         });
 

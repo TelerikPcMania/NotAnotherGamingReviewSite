@@ -42,6 +42,10 @@ module.exports = function(app) {
         res.render('403');
     });
 
+    app.get('/about', function(req, res){
+       res.render('about');
+    });
+
     app.get('*', function(req, res) {
         res.render('index', {currentUser: req.user});
     });
