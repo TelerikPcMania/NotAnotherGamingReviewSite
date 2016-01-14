@@ -17,16 +17,16 @@
                     label.col-md-2.control-label(for="tb-platforms")
                         | Platforms:
                     .col-md-6
-                        select.form-control#tb-platforms(multiple="multiple")
-                            option(value="pc") PC
-                            option(value="xbox-one") Xbox One
-                            option(value="ps3") PS3
-                            option(value="ps4") PS4
+                        select.form-control#tb-platforms(multiple="multiple" name="platforms")
+                            option(value="PC") PC
+                            option(value="Xbox-One") Xbox One
+                            option(value="PS3") PS3
+                            option(value="PS4") PS4
                 .form-group
                     label.col-md-2.control-label(for="tb-tags")
                         | Tags:
                     .col-md-10
-                        input.form-control#tb-price(type="text", name="tags", placeholder="Tags")
+                        input.form-control#tb-tags(type="text", name="tags", placeholder="Tags")
                 .form-group
                     label.col-md-2.control-label(for="tb-image")
                         | Image:
@@ -41,13 +41,9 @@
                     button.btn.btn-success.pull-right.col-md-2#btnSelected Add game
         script(type="text/javascript").
             $(document).ready(function () {
-                var date = $("#tb-release").kendoDatePicker({ format: "dd MMMM yyyy" })
-                        .data("kendoDatePicker");
-                var optional = $("#tb-platforms").kendoMultiSelect({
+                $("#tb-release").kendoDatePicker({ format: "dd MMMM yyyy" });
+                $("#tb-platforms").kendoMultiSelect({
                     autoClose: false
-                }).data("kendoMultiSelect");
-                $("#btnSelected").click(function () {
-                    alert("Selected platforms and date:\n\n"+ optional.value() + '  '+kendo.toString(date.value(), "MM/dd/yyyy"));
                 });
             });
 
