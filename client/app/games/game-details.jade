@@ -1,22 +1,31 @@
 .container
-    h2 {{ game.title }}
-    p Released: {{ game.released | date }}
-    p Rating: {{game.rating}}
-    form.form-horizontal
-        select.rating(ng-model="currentGame.rating")
-            each val in [1, 2, 3, 4, 5]
-                option(value=val)= val
-
-        b.btn.btn-sm.btn-default(ng-click="rateGame(currentGame)") Rate
-
-    div.img-container
-        img(src="{{game.image}}")
-
-    ul.games Tags:
-        li(ng-repeat="tag in game.tags")  {{ tag }}
-    ul.games Platforms:
-        li(ng-repeat="platform in game.platforms")  {{ platform }}
-    .reviews Reviews:
-        .well(ng-repeat="review in game.reviews | orderBy: '-published'")  {{ review.text }}
-            a.btn.btn-md.btn-primary.pull-right( href="#/games/{{ game._id }}/delete-review{{review._id}}" role='button') Delete Review
-    a.btn.btn-md.btn-primary(href="#/games/{{ game._id }}/add-review", role='button') Add a Review
+    .col-md-4
+        .row
+            .well
+                h2 {{ game.title }}
+                p Released: {{ game.released | date }}
+                p Rating: {{game.rating}}
+                form.form-horizontal
+                    select.rating(ng-model="currentGame.rating")
+                        each val in [1, 2, 3, 4, 5]
+                            option(value=val)= val
+                    b.btn.btn-primary.pull-right(ng-click="rateGame(currentGame)") Rate
+            .well
+                fieldset
+                    legend Tags:
+                    ul.games
+                        li(ng-repeat="tag in game.tags")  {{ tag }}
+            .well
+                fieldset
+                    legend Platforms:
+                    ul.games
+                        li(ng-repeat="platform in game.platforms")  {{ platform }}
+    .col-md-8
+        div.img-container
+            img.img-rounded(src="{{game.image}}")
+    .row
+        .col-md-12
+            .reviews Reviews:
+                .well(ng-repeat="review in game.reviews | orderBy: '-published'")  {{ review.text }}
+                    a.btn.btn-md.btn-primary.pull-right( href="#/games/{{ game._id }}/delete-review{{review._id}}" role='button') Delete Review
+                    a.btn.btn-md.btn-primary(href="#/games/{{ game._id }}/add-review", role='button') Add a Review
