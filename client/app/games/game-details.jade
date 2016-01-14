@@ -17,6 +17,6 @@
     ul.games Platforms:
         li(ng-repeat="platform in game.platforms")  {{ platform }}
     .reviews Reviews:
-        .well(ng-repeat="review in game.reviews")  {{ review.text }}
+        .well(ng-repeat="review in game.reviews | orderBy: '-published'")  {{ review.text }}
             a.btn.btn-md.btn-primary.pull-right( href="#/games/{{ game._id }}/add-review" role='button') Delete Review
     a.btn.btn-md.btn-primary(href="#/games/{{ game._id }}/add-review", role='button') Add a Review
