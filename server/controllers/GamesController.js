@@ -1,4 +1,5 @@
-var Game = require('mongoose').model('game');
+var Game = require('mongoose').model('game'),
+    Review = require('mongoose').model('review');
 
 module.exports = {
     getAllGames: function (req, res, next) {
@@ -34,7 +35,6 @@ module.exports = {
             platforms: reqGame.platforms,
             image: reqGame.image,
             rating: +0,
-            review: [],
             tags: reqGame.tags
         });
 
@@ -48,7 +48,7 @@ module.exports = {
         });
     },
 
-    put: function (req, res) {
+    addRating: function (req, res) {
         var rating = req.body;
         Game.findOne({_id: req.params.id}).exec(function (err, game) {
             if (err) {
@@ -62,6 +62,34 @@ module.exports = {
                 }
 
                 res.status(200);
+            })
+
+        })
+    },
+
+    addReview: function (req, res) {
+        var review = req.body;
+        Game.findOne({_id: req.params.id}).exec(function (err, game) {
+            if (err) {
+                console.log('Game could not be loaded: ' + err);
+            }
+
+            var gameReview = new Review({
+                gameTitle: game.title,
+                text: review.text,
+                featured: true,
+                published: new Date(),
+                author_id: req.params.user_id
+            });
+
+            game.reviews.push(gameReview);
+
+            game.save(function (err) {
+                if (err) {
+                    console.log('Game review couldn/t be added: ' + err);
+                }
+
+                res.status(201);
             })
 
         })

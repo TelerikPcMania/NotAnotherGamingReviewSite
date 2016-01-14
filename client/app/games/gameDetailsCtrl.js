@@ -8,6 +8,8 @@ app.controller('GameDetailsCtrl', function ($scope, $routeParams, $q, $location,
         })
     });
 
+    $scope.reviews = $scope.game.reviews;
+
     $scope.rateGame = function (rating) {
         var deferred = $q.defer();
 
